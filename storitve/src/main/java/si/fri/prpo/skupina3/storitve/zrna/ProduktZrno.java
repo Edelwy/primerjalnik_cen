@@ -6,11 +6,11 @@ import java.util.*;
 
 @ApplicationScoped
 public class ProduktZrno {
-    @PersistenceContext(unitName = "primerjalnik-cen-jpa")
+    @PersistenceContext(unitName="primerjalnik-cen-jpa")
     private EntityManager em;
 
-    public List<Produkt> getIzdelki() {
-        List<Produkt> produkti = em.createNamedQuery("Uporabnik.getAll").getResultList();
+    public List<Produkt> getProdukt() {
+        List<Produkt> produkti = em.createNamedQuery("Produkt.getAll").getResultList();
         return  produkti;
     }
 }

@@ -19,11 +19,11 @@ public class Produkt {
     private Integer cena;
     private String opis;
 
-    @ManyToMany(mappedBy="seznamKosaric", cascade=CascadeType.ALL)
+    @ManyToMany(mappedBy="produkti", cascade=CascadeType.ALL)
     private List<Kosarica> kosarice;
 
     @ManyToOne
-    @JoinColumn(name="id_trgovine")
+    @JoinColumn(name="trgovina_id")
     private Trgovina trgovina;
 
     //getter metode:
@@ -44,4 +44,18 @@ public class Produkt {
     //dodamo in brisemo kosarice
     public void addKosarica(Kosarica kosarica) {kosarice.add(kosarica);}
     public void deleteKosarica(Kosarica kosarica) {kosarice.remove(kosarica);}
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+
+        sb.append("Ime: ");
+        sb.append(this.ime + " | ");
+        sb.append(" Cena: ");
+        sb.append(this.cena + " \n ");
+        sb.append("Opis: ");
+        sb.append(this.opis);
+
+        return sb.toString();
+    }
 }

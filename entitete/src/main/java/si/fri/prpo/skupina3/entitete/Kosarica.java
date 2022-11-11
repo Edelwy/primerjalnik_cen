@@ -1,6 +1,7 @@
 package si.fri.prpo.skupina3.entitete;
 import javax.persistence.*;
 import java.util.*;
+
 @Entity(name="kosarica")
 @NamedQueries(value={
                 @NamedQuery(name="Kosarica.getAll", query="SELECT k FROM kosarica k"),
@@ -20,18 +21,21 @@ public class Kosarica {
     private Integer postnina;
 
     @ManyToOne
-    @JoinColumn(name="id_uporabnik")
+    @JoinColumn(name="uporabnik_id")
     private Uporabnik uporabnik;
 
     @ManyToOne
-    @JoinColumn(name="id_primerjalnik")
+    @JoinColumn(name="primerjalnik_id")
     private Primerjalnik primerjalnik;
 
     @ManyToOne
-    @JoinColumn(name="id_trgovina")
+    @JoinColumn(name="trgovina_id")
     private Trgovina trgovina;
 
-    @ManyToMany(mappedBy="seznamProduktov", cascade=CascadeType.ALL)
+    @ManyToMany(cascade=CascadeType.ALL)
+    @JoinTable(name="produkt_kosarica",
+            joinColumns = @JoinColumn(name="kosarice_id"),
+            inverseJoinColumns = @JoinColumn(name="produkti_id"))
     private List<Produkt> produkti;
 
     // getter metode:
@@ -56,4 +60,18 @@ public class Kosarica {
     //dodamo ali izbrisemo produkt:
     public void addProdukt(Produkt produkt) {produkti.add(produkt);}
     public void deleteProdukt(Produkt produkt) {produkti.remove(produkt);}
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+
+        sb.append("Kolicina izdelkov: ");
+        sb.append(this.kolicina + " | ");
+        sb.append(" Popust: ");
+        sb.append(this.popust + " | ");
+        sb.append(" Postnina: ");
+        sb.append(this.postnina);
+
+        return sb.toString();
+    }
 }

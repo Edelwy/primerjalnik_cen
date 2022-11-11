@@ -13,14 +13,14 @@ import java.util.*;
 public class Trgovina {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="id_trgovina")
+    @Column(name="trgovina_id")
     private Integer id;
     private String ime;
 
-    @OneToMany(mappedBy="seznamKosaric", cascade=CascadeType.ALL)
+    @OneToMany(mappedBy="Trgovina", cascade=CascadeType.ALL)
     private List<Kosarica> kosarice;
 
-    @OneToMany(mappedBy="seznamProduktov", cascade=CascadeType.ALL)
+    @OneToMany(mappedBy="Trgovina", cascade=CascadeType.ALL)
     private List<Produkt> produkti;
 
     //getter metode:
@@ -40,4 +40,13 @@ public class Trgovina {
     //dodamo ali izbrisemo produkt:
     public void addProdukt(Produkt produkt) {produkti.add(produkt);}
     public void deleteProdukt(Produkt produkt) {produkti.remove(produkt);}
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+
+        sb.append("Ime: ");
+        sb.append(this.ime);
+        return sb.toString();
+    }
 }

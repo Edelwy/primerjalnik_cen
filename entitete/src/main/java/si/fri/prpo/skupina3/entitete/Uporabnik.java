@@ -13,18 +13,18 @@ import java.util.*;
 public class Uporabnik {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="id_uporabnik")
+    @Column(name="uporabnik_id")
     private Integer id;
     private String ime;
     private String priimek;
     @Column(unique=true)
     private String username;
 
-    @OneToMany(mappedBy="seznamKosaric", cascade=CascadeType.ALL)
+    @OneToMany(mappedBy="Uporabnik", cascade=CascadeType.ALL)
     private List<Kosarica> kosarice;
 
     @OneToOne
-    @JoinColumn(name="id_primerjalnik")
+    @JoinColumn(name="primerjalnik_id")
     private Primerjalnik primerjalnik;
 
 
@@ -46,4 +46,18 @@ public class Uporabnik {
     //dodajanje in brisanje kosarice:
     public void addKosarica(Kosarica kosarica) {kosarice.add(kosarica);}
     public void deleteKosarica(Kosarica kosarica) {kosarice.remove(kosarica);}
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+
+        sb.append("Ime: ");
+        sb.append(this.ime + " | ");
+        sb.append(" Priimek: ");
+        sb.append(this.priimek + " | ");
+        sb.append(" Uporabnisko ime: ");
+        sb.append(this.username);
+
+        return sb.toString();
+    }
 }

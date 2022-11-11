@@ -16,11 +16,11 @@ import java.util.*;
 public class Primerjalnik {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="id_primerjalnik")
+    @Column(name="primerjalnik_id")
     private Integer id;
     private Integer stevilo;
 
-    @OneToMany(mappedBy="seznamKosaric", cascade=CascadeType.ALL)
+    @OneToMany(mappedBy="Primerjalnik", cascade=CascadeType.ALL)
     private List<Kosarica> kosarice;
 
     // getter metode:
@@ -35,4 +35,5 @@ public class Primerjalnik {
     //dodamo in brisemo kosarice
     public void addKosarica(Kosarica kosarica) {kosarice.add(kosarica);}
     public void deleteKosarica(Kosarica kosarica) {kosarice.remove(kosarica);}
+
 }

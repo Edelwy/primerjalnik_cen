@@ -31,10 +31,10 @@ public class JPAServlet extends HttpServlet {
         Optional<String> microserviceName = ConfigurationUtil.getInstance().get("kumuluzee.name");
         microserviceName.ifPresent(s -> writer.println("Izpis generiran v mikrostoritvi " + s + "\n"));
 
-        List<Produkt> produkti = produktZrno.getIzdelki();
+        List<Produkt> produkti = produktZrno.getProdukt();
         System.out.println(Arrays.toString(produkti.toArray()));
 
-        writer.append("Seznam obstoječih produktov:\n");
+        writer.append("Seznam obstojecih produktov:\n");
         produkti.stream().forEach(u -> writer.append(u.toString() + "\n"));
 
     }
