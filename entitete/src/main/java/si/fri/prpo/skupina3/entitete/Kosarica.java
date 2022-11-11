@@ -5,7 +5,7 @@ import java.util.*;
 @NamedQueries(value={
                 @NamedQuery(name="Kosarica.getAll", query="SELECT k FROM kosarica k"),
                 @NamedQuery(name="Kosarica.geById", query="SELECT k FROM kosarica k WHERE k.id = :id"),
-                @NamedQuery(name="Kosarica.geByKolicina", query="SELECT k FROM kosarica k WHERE k.kolicinaProduktov = :kolicina"),
+                @NamedQuery(name="Kosarica.geByKolicina", query="SELECT k FROM kosarica k WHERE k.kolicina = :kolicina"),
                 @NamedQuery(name="Kosarica.getIfPopust", query="SELECT k FROM kosarica k WHERE k.popust IS NOT NULL"),
                 @NamedQuery(name="Kosarica.getIfPostnina", query="SELECT k FROM kosarica k WHERE k.postnina IS NOT NULL")
         })
@@ -15,10 +15,9 @@ public class Kosarica {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="id_kosarica")
     private Integer id;
-    private Integer kolicinaProduktov;
+    private Integer kolicina;
     private Integer popust;
     private Integer postnina;
-    private Integer total;
 
     @ManyToOne
     @JoinColumn(name="id_uporabnik")
@@ -37,10 +36,9 @@ public class Kosarica {
 
     // getter metode:
     public Integer getId() {return id;}
-    public Integer getKolicinaProduktov() {return kolicinaProduktov;}
+    public Integer getKolicinaProduktov() {return kolicina;}
     public Integer getPopust() {return popust;}
     public Integer getPostnina() {return postnina;}
-    public Integer getTotal() {return total;}
     public Primerjalnik getPrimerjalnik() {return primerjalnik;}
     public Trgovina getTrgovina() {return trgovina;}
     public Uporabnik getUporabnik() {return uporabnik;}
@@ -48,11 +46,10 @@ public class Kosarica {
 
     // setter metode:
     public void setId(Integer id) {this.id = id;}
-    public void setKolicinaProduktov(Integer kolicinaProduktov) {this.kolicinaProduktov = kolicinaProduktov;}
+    public void setKolicinaProduktov(Integer kolicinaProduktov) {this.kolicina = kolicinaProduktov;}
     public void setPopust(Integer popust) {this.popust = popust;}
     public void setPostnina(Integer postnina) {this.postnina = postnina;}
     public void setPrimerjalnik(Primerjalnik primerjalnik) {this.primerjalnik = primerjalnik;}
-    public void setTotal(Integer total) {this.total = total;}
     public void setTrgovina(Trgovina trgovina) {this.trgovina = trgovina;}
     public void setUporabnik(Uporabnik uporabnik) {this.uporabnik = uporabnik;}
 
