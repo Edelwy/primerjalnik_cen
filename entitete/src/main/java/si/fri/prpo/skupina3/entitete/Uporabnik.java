@@ -3,9 +3,11 @@ import javax.persistence.*;
 import java.util.*;
 
 @Entity(name="uporabnik")
-@NamedQueries(value =
-        {
-                @NamedQuery(name="Uporabnik.getAll", query="SELECT o FROM uporabnik o")
+@NamedQueries(value={
+        @NamedQuery(name="Uporabnik.getAll", query="SELECT u FROM uporabnik u"),
+        @NamedQuery(name="Uporabnik.getByUsername", query="SELECT u FROM uporabnik u WHERE u.username = :username" ),
+        @NamedQuery(name="Uporabnik.getById", query="SELECT u FROM uporabnik u WHERE u.id = :id" ),
+        @NamedQuery(name="Uporabnik.getByLegalName", query="SELECT u FROM uporabnik u WHERE u.ime = :ime AND u.priimek = :priimek")
         })
 
 public class Uporabnik {

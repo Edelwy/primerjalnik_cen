@@ -5,7 +5,10 @@ import java.util.*;
 @Entity(name="primerjalnik")
 @NamedQueries(value =
         {
-                @NamedQuery(name="Primerjalnik.getAll", query="SELECT o FROM primerjalnik o")
+                @NamedQuery(name="Primerjalnik.getAll", query="SELECT o FROM primerjalnik o"),
+                @NamedQuery(name="Primerjalnik.getById", query="SELECT o FROM primerjalnik o WHERE o.id = :id"),
+                @NamedQuery(name="Primerjalnik.getByKolicina", query="SELECT o FROM primerjalnik o WHERE o.steviloKosaric = :stevilo"),
+                @NamedQuery(name="Primerjalnik.getKosarice", query="SELECT o.kosarice FROM primerjalnik o WHERE o.kosarice IS NOT EMPTY ")
         })
 
 public class Primerjalnik {

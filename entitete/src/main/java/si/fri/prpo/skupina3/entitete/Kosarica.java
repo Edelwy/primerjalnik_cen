@@ -2,9 +2,12 @@ package si.fri.prpo.skupina3.entitete;
 import javax.persistence.*;
 import java.util.*;
 @Entity(name="kosarica")
-@NamedQueries(value =
-        {
-                @NamedQuery(name="Kosarica.getAll", query="SELECT o FROM kosarica o")
+@NamedQueries(value={
+                @NamedQuery(name="Kosarica.getAll", query="SELECT k FROM kosarica k"),
+                @NamedQuery(name="Kosarica.geById", query="SELECT k FROM kosarica k WHERE k.id = :id"),
+                @NamedQuery(name="Kosarica.geByKolicina", query="SELECT k FROM kosarica k WHERE k.kolicinaProduktov = :kolicina"),
+                @NamedQuery(name="Kosarica.getIfPopust", query="SELECT k FROM kosarica k WHERE k.popust IS NOT NULL"),
+                @NamedQuery(name="Kosarica.getIfPostnina", query="SELECT k FROM kosarica k WHERE k.postnina IS NOT NULL")
         })
 
 public class Kosarica {

@@ -3,9 +3,11 @@ import javax.persistence.*;
 import java.util.*;
 
 @Entity(name="produkt")
-@NamedQueries(value =
-        {
-                @NamedQuery(name="Produkt.getAll", query="SELECT o FROM produkt o")
+@NamedQueries(value={
+                @NamedQuery(name="Produkt.getAll", query="SELECT p FROM produkt p"),
+                @NamedQuery(name="Produkt.getCheaperThan", query="SELECT p FROM produkt p WHERE p.cena < :cena"),
+                @NamedQuery(name="Produkt.byName", query="SELECT p FROM produkt p WHERE p.ime = :ime"),
+                @NamedQuery(name="Produkt.byId", query="SELECT p FROM produkt p WHERE p.id = :id")
         })
 
 public class Produkt {
