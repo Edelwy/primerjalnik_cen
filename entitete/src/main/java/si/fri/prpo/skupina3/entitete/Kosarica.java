@@ -34,8 +34,8 @@ public class Kosarica {
 
     @ManyToMany(cascade=CascadeType.ALL)
     @JoinTable(name="produkt_kosarica",
-            joinColumns = @JoinColumn(name="kosarice_id"),
-            inverseJoinColumns = @JoinColumn(name="produkti_id"))
+            joinColumns = @JoinColumn(name="id_kosarica"),
+            inverseJoinColumns = @JoinColumn(name="id_produkt"))
     private List<Produkt> produkti;
 
     // getter metode:
@@ -58,13 +58,15 @@ public class Kosarica {
     public void setUporabnik(Uporabnik uporabnik) {this.uporabnik = uporabnik;}
 
     //dodamo ali izbrisemo produkt:
-    public void addProdukt(Produkt produkt) {produkti.add(produkt);}
-    public void deleteProdukt(Produkt produkt) {produkti.remove(produkt);}
+    //public void addProdukt(Produkt produkt) {produkti.add(produkt);}
+    //public void deleteProdukt(Produkt produkt) {produkti.remove(produkt);}
 
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
 
+        sb.append("Uporabnik: ");
+        sb.append(this.uporabnik.getIme() + " | ");
         sb.append("Kolicina izdelkov: ");
         sb.append(this.kolicina + " | ");
         sb.append(" Popust: ");

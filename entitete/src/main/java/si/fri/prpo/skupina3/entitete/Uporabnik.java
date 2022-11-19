@@ -43,9 +43,9 @@ public class Uporabnik {
     public void setUsername(String username) {this.username = username;}
     public void setPrimerjalnik(Primerjalnik primerjalnik) {this.primerjalnik = primerjalnik;}
 
-    //dodajanje in brisanje kosarice:
-    public void addKosarica(Kosarica kosarica) {kosarice.add(kosarica);}
-    public void deleteKosarica(Kosarica kosarica) {kosarice.remove(kosarica);}
+    //dodajanje in brisanje kosarice: NE TUKAJ !
+    //public void addKosarica(Kosarica kosarica) {kosarice.add(kosarica);}
+    //public void deleteKosarica(Kosarica kosarica) {kosarice.remove(kosarica);}
 
     @Override
     public String toString() {

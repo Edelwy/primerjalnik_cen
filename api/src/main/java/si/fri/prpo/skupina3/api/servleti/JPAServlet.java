@@ -32,9 +32,21 @@ public class JPAServlet extends HttpServlet {
         microserviceName.ifPresent(s -> writer.println("Izpis generiran v mikrostoritvi " + s + "\n"));
 
         List<Produkt> produkti = produktZrno.getProdukt();
+        //izpis se na konzolo:
         System.out.println(Arrays.toString(produkti.toArray()));
 
+        //klasicen izpis
         writer.append("Seznam obstojecih produktov:\n");
+        produkti.stream().forEach(u -> writer.append(u.toString() + "\n"));
+
+        //zapis produktov cenejsih od 40 evrov
+        produkti = produktZrno.getCheaper();
+        writer.append("\nSeznam produktov pod 40 evri:\n");
+        produkti.stream().forEach(u -> writer.append(u.toString() + "\n"));
+
+        //izpis z Criteria API
+        produkti = produktZrno.getProduktCriteriaAPI();
+        writer.append("\nSeznam produktov izpisan z Criteria API:\n");
         produkti.stream().forEach(u -> writer.append(u.toString() + "\n"));
 
     }

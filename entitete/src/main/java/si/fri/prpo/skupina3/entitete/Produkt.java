@@ -42,8 +42,8 @@ public class Produkt {
     public void setTrgovina(Trgovina trgovina) {this.trgovina = trgovina;}
 
     //dodamo in brisemo kosarice
-    public void addKosarica(Kosarica kosarica) {kosarice.add(kosarica);}
-    public void deleteKosarica(Kosarica kosarica) {kosarice.remove(kosarica);}
+    //public void addKosarica(Kosarica kosarica) {kosarice.add(kosarica);}
+    //public void deleteKosarica(Kosarica kosarica) {kosarice.remove(kosarica);}
 
     @Override
     public String toString() {
@@ -55,6 +55,10 @@ public class Produkt {
         sb.append(this.cena + " \n ");
         sb.append("Opis: ");
         sb.append(this.opis);
+        String s = Arrays.toString(this.kosarice.toArray());
+        sb.append("\n Produkt je v kosaricah: " + s + " \n ");
+        sb.append("Trgovina: ");
+        sb.append(this.trgovina.getIme());
 
         return sb.toString();
     }

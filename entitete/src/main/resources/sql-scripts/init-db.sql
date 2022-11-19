@@ -11,6 +11,10 @@ INSERT INTO produkt (ime, opis, cena, trgovina_id) VALUES ('Kavbojke', 'Vintage 
 
 INSERT INTO kosarica (kolicina, postnina, popust, uporabnik_id, primerjalnik_id, trgovina_id) VALUES (1, 15, 30, 1, 1, 1);
 
+INSERT INTO produkt_kosarica (id_kosarica, id_produkt) VALUES (1, 1);
+INSERT INTO produkt_kosarica (id_kosarica, id_produkt) VALUES (1, 2);
+INSERT INTO produkt_kosarica (id_kosarica, id_produkt) VALUES (1, 3);
+INSERT INTO produkt_kosarica (id_kosarica, id_produkt) VALUES (1, 4);
 
 
 

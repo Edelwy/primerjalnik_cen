@@ -32,8 +32,8 @@ public class Primerjalnik {
     public void setId(Integer id) {this.id = id;}
     public void setSteviloKosaric(Integer st) {this.stevilo = st;}
 
-    //dodamo in brisemo kosarice
-    public void addKosarica(Kosarica kosarica) {kosarice.add(kosarica);}
-    public void deleteKosarica(Kosarica kosarica) {kosarice.remove(kosarica);}
+    //dodamo in brisemo kosarice: NE TUKAJ !
+    //public void addKosarica(Kosarica kosarica) {kosarice.add(kosarica);}
+    //public void deleteKosarica(Kosarica kosarica) {kosarice.remove(kosarica);}
 
 }

@@ -34,12 +34,12 @@ public class Trgovina {
     public void setIme(String ime) {this.ime = ime;}
 
     //dodamo in brisemo kosarice
-    public void addKosarica(Kosarica kosarica) {kosarice.add(kosarica);}
-    public void deleteKosarica(Kosarica kosarica) {kosarice.remove(kosarica);}
+    //public void addKosarica(Kosarica kosarica) {kosarice.add(kosarica);}
+    //public void deleteKosarica(Kosarica kosarica) {kosarice.remove(kosarica);}
 
     //dodamo ali izbrisemo produkt:
-    public void addProdukt(Produkt produkt) {produkti.add(produkt);}
-    public void deleteProdukt(Produkt produkt) {produkti.remove(produkt);}
+    //public void addProdukt(Produkt produkt) {produkti.add(produkt);}
+    //public void deleteProdukt(Produkt produkt) {produkti.remove(produkt);}
 
     @Override
     public String toString() {
