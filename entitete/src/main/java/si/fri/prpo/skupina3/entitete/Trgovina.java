@@ -4,10 +4,10 @@ import java.util.*;
 
 @Entity(name="trgovina")
 @NamedQueries(value={
-                @NamedQuery(name="Trgoivna.getAll", query="SELECT t FROM trgovina t"),
-                @NamedQuery(name="Trgoivna.getById", query="SELECT t FROM trgovina t WHERE t.id = :id"),
-                @NamedQuery(name="Trgoivna.getKosarice", query="SELECT t.kosarice FROM trgovina t WHERE t.kosarice IS NOT EMPTY"),
-                @NamedQuery(name="Trgoivna.getProdukti", query="SELECT t.produkti FROM trgovina t WHERE t.produkti IS NOT EMPTY")
+                @NamedQuery(name="Trgovina.getAll", query="SELECT t FROM trgovina t"),
+                @NamedQuery(name="Trgovina.getById", query="SELECT t FROM trgovina t WHERE t.id = :id"),
+                @NamedQuery(name="Trgovina.getKosarice", query="SELECT t.kosarice FROM trgovina t WHERE t.kosarice IS NOT EMPTY"),
+                @NamedQuery(name="Trgovina.getProdukti", query="SELECT t.produkti FROM trgovina t WHERE t.produkti IS NOT EMPTY")
         })
 
 public class Trgovina {
