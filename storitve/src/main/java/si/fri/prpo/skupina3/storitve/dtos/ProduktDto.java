@@ -26,7 +26,10 @@ public class ProduktDto {
         this.opis = produkt.getOpis();
     }
 
-    public Integer getProduktId() { return id; }
+    public Integer getProduktId() {
+        return id;
+    }
+
     public void setProduktId(Integer produktId) {
         this.id = produktId;
     }

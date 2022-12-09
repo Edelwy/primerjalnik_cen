@@ -167,6 +167,16 @@ public class UpravljanjeProduktovZrno {
             return null;
         }
 
+        if(produkt.getTrgovina() != kosarica.getTrgovina()) {
+            log.info("Trgovina produkta in trgovina kosarice nista enaki!");
+            return null;
+        }
+
+        if(kosarica.getProdukti().contains(produkt)) {
+            log.info("Produkt je ze v tej kosarici!");
+            return null;
+        }
+
         kosarica.getProdukti().add(produkt);
         produkt.getKosarice().add(kosarica);
         int n = kosarica.getKolicinaProduktov();
@@ -185,6 +195,11 @@ public class UpravljanjeProduktovZrno {
         }
         if (produkt == null) {
             log.info("Ne morem odstraniti produkta, ker produkt ne obstaja.");
+            return null;
+        }
+
+        if(!kosarica.getProdukti().contains(produkt)) {
+            log.info("Produkt ni v dani kosarici!");
             return null;
         }
 

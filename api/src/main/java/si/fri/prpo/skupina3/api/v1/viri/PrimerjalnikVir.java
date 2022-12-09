@@ -23,15 +23,24 @@ public class PrimerjalnikVir {
     private PrimerjalnikZrno primerjalnikZrno;
 
     @GET
-    public Response izpisProduktov() {
+    public Response izpisPrimerjalnikov() {
         List<Primerjalnik> primerjalniki = primerjalnikZrno.pridobiPrimerjalnike();
         return Response.status(Response.Status.OK).entity(primerjalniki).build();
     }
 
     @GET
     @Path("{id}")
-    public Response izpisProdukta(@PathParam("id") Integer id) {
+    public Response izpisPrimerjalnika(@PathParam("id") Integer id) {
         Primerjalnik primerjalnik = primerjalnikZrno.pridobiPrimerjalnik(id);
         return Response.status(Response.Status.OK).entity(primerjalnik).build();
     }
+
+    @PUT
+    @Path("{id}")
+    public Response posodobiPrimerjalnik(@PathParam("id") Integer id) {
+        if(!primerjalnikZrno.posodobiPrimerjalnik(id)) return Response.status(Response.Status.NOT_FOUND).build();
+        return Response.status(Response.Status.OK).build();
+    }
+
+    //primerjalnika ne moramo ustvarjati ali brisati: to se zgodi ko ustvarimo uporabnika!!!
 }

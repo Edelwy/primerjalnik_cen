@@ -27,6 +27,7 @@ public class UporabnikDto {
         this.ime = uporabnik.getIme();
         this.priimek = uporabnik.getPriimek();
         this.username = uporabnik.getUsername();
+        this.primerjalnik = uporabnik.getPrimerjalnik();
     }
 
     public Integer getId() {return id;}

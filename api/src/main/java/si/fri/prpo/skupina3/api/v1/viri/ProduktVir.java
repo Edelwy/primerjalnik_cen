@@ -4,6 +4,7 @@ import si.fri.prpo.skupina3.entitete.Produkt;
 import si.fri.prpo.skupina3.storitve.dtos.ProduktDto;
 import si.fri.prpo.skupina3.storitve.dtos.TrgovinaDto;
 import si.fri.prpo.skupina3.storitve.zrna.ProduktZrno;
+import si.fri.prpo.skupina3.storitve.zrna.TrgovinaZrno;
 import si.fri.prpo.skupina3.storitve.zrna.UpravljanjeProduktovZrno;
 import si.fri.prpo.skupina3.storitve.zrna.UpravljanjeUporabnikovZrno;
 
@@ -21,7 +22,7 @@ import java.util.List;
 @Produces(MediaType.APPLICATION_JSON)
 public class ProduktVir {
 
-    /*@Inject
+    @Inject
     private ProduktZrno produktZrno;
 
     @Inject
@@ -41,11 +42,20 @@ public class ProduktVir {
         return Response.status(Response.Status.OK).entity(produkt).build();
     }
 
+    //ustvarimo produkt na viru trgovine
     @POST
-    public Response createProduct(ProduktDto produkt, TrgovinaDto trgovina) {
-
+    @Path("{trgovina}")
+    public Response ustvariProdukt(ProduktDto produkt, @PathParam("trgovina") String imeTrgovine) {
+        TrgovinaDto trgovina = new TrgovinaDto(imeTrgovine);
         Produkt novProdukt = upravljalecProduktovZrno.ustvariProdukt(produkt, trgovina);
-        return Response.status(Response.Status.OK).entity(produkt).build();
+        return Response.status(Response.Status.OK).entity(novProdukt).build();
+    }
+
+    @PUT
+    @Path("{id}")
+    public Response posodobiProdukt(@PathParam("id") Integer id) {
+        if(!produktZrno.posodobiProdukt(id)) return Response.status(Response.Status.NOT_FOUND).build();
+        return Response.status(Response.Status.OK).build();
     }
 
     @DELETE
@@ -56,5 +66,5 @@ public class ProduktVir {
         ProduktDto produkt = new ProduktDto(p);
         upravljalecProduktovZrno.izbrisiProdukt(produkt);
         return Response.status(Response.Status.OK).entity(produkt).build();
-    }*/
+    }
 }

@@ -36,4 +36,7 @@ public class KosaricaDto {
     public Integer getPostnina() {return postnina;}
     public void setPostnina(Integer postnina) {this.postnina = postnina;}
 
+    public Integer getKolicina() {return kolicina;}
+    public void setKolicina(Integer kolicina) {this.kolicina = kolicina;}
+
 }

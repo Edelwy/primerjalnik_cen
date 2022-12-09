@@ -67,7 +67,7 @@ public class UpravljanjeUporabnikovZrno {
         }
 
         Primerjalnik primerjalnik = uporabnik.getPrimerjalnik();
-        primerjalnikZrno.odstraniPrimerjalnik(primerjalnik.getId());
+        if(primerjalnik != null) primerjalnikZrno.odstraniPrimerjalnik(primerjalnik.getId());
         uporabnikZrno.odstraniUporabnika(uporabnik.getId());
         return true;
     }

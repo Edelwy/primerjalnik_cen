@@ -8,6 +8,10 @@ public class TrgovinaDto {
     public TrgovinaDto() {
     }
 
+    public TrgovinaDto(String ime) {
+        this.ime = ime;
+    }
+
     public TrgovinaDto(Trgovina trgovina) {
         this.ime = trgovina.getIme();
     }

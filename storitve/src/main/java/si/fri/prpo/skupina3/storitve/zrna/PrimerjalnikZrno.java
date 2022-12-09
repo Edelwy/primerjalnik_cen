@@ -67,7 +67,7 @@ public class PrimerjalnikZrno {
     public boolean odstraniPrimerjalnik(int primerjalnikId) {
         Primerjalnik primerjalnik = pridobiPrimerjalnik(primerjalnikId);
         if (primerjalnik != null) {
-            em.remove(primerjalnikId);
+            em.remove(primerjalnik);
             return true;
         }
         return false;
