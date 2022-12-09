@@ -1,4 +1,5 @@
 package si.fri.prpo.skupina3.entitete;
+import javax.json.bind.annotation.JsonbTransient;
 import javax.persistence.*;
 import java.util.*;
 
@@ -6,6 +7,7 @@ import java.util.*;
 @NamedQueries(value={
                 @NamedQuery(name="Trgovina.getAll", query="SELECT t FROM trgovina t"),
                 @NamedQuery(name="Trgovina.getById", query="SELECT t FROM trgovina t WHERE t.id = :id"),
+                @NamedQuery(name="Trgovina.getByName", query="SELECT t FROM trgovina t WHERE t.ime = :ime" ),
                 @NamedQuery(name="Trgovina.getKosarice", query="SELECT t.kosarice FROM trgovina t WHERE t.kosarice IS NOT EMPTY"),
                 @NamedQuery(name="Trgovina.getProdukti", query="SELECT t.produkti FROM trgovina t WHERE t.produkti IS NOT EMPTY")
         })
@@ -17,9 +19,11 @@ public class Trgovina {
     private Integer id;
     private String ime;
 
+    @JsonbTransient
     @OneToMany(mappedBy="Trgovina", cascade=CascadeType.ALL)
     private List<Kosarica> kosarice;
 
+    @JsonbTransient
     @OneToMany(mappedBy="Trgovina", cascade=CascadeType.ALL)
     private List<Produkt> produkti;
 
@@ -46,7 +50,7 @@ public class Trgovina {
         StringBuilder sb = new StringBuilder();
 
         sb.append("Ime: ");
-        sb.append(this.ime);
+        sb.append(this.ime + "\n");
         return sb.toString();
     }
 }

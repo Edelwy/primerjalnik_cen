@@ -48,19 +48,28 @@ public class TrgovinaZrno {
     }
 
     @Transactional
-    public Trgovina dodajTrgovino(Trgovina trgovina) {
-        if (trgovina != null) {
-            em.persist(trgovina);
+    public Trgovina dodajTrgovino(String ime) {
+        Query q = em.createNamedQuery("Trgovina.getByName");
+        q.setParameter("ime", ime);
+
+
+        if(!q.getResultList().isEmpty()) {
+            log.info("Trgovina s tem imenom ze obstaja.");
+            return (Trgovina) q.getResultList().get(0);
         }
-        return trgovina;
+
+        Trgovina novaTrgovina = new Trgovina();
+        novaTrgovina.setIme(ime);
+        em.persist(novaTrgovina);
+        return novaTrgovina;
     }
 
     @Transactional
-    public Trgovina posodobiTrgovino(int trgovinaId, Trgovina trgovina) {
-        Trgovina t = em.find(Trgovina.class, trgovinaId);
-        trgovina.setId(t.getId());
+    public boolean posodobiTrgovino(int id) {
+        Trgovina trgovina = pridobiTrgovino(id);
+        if(trgovina == null) return false;
         em.merge(trgovina);
-        return trgovina;
+        return true;
     }
 
     @Transactional

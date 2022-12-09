@@ -48,19 +48,19 @@ public class PrimerjalnikZrno {
     }
 
     @Transactional
-    public Primerjalnik dodajPrimerjalnik(Primerjalnik primerjalnik) {
-        if (primerjalnik != null) {
-            em.persist(primerjalnik);
-        }
-        return primerjalnik;
+    public Primerjalnik dodajPrimerjalnik(Integer kolicina) {
+        Primerjalnik novPrimerjalnik = new Primerjalnik();
+        novPrimerjalnik.setSteviloKosaric(kolicina);
+        em.persist(novPrimerjalnik);
+        return novPrimerjalnik;
     }
 
     @Transactional
-    public Primerjalnik posodobiPrimerjalnik(int primerjalnikId, Primerjalnik primerjalnik) {
-        Produkt p = em.find(Produkt.class, primerjalnikId);
-        primerjalnik.setId(p.getId());
+    public boolean posodobiPrimerjalnik(int id) {
+        Primerjalnik primerjalnik = pridobiPrimerjalnik(id);
+        if(primerjalnik == null) return false;
         em.merge(primerjalnik);
-        return primerjalnik;
+        return true;
     }
 
     @Transactional

@@ -1,6 +1,8 @@
 package si.fri.prpo.skupina3.storitve.zrna;
 import java.util.List;
 import java.util.logging.Logger;
+
+import org.eclipse.persistence.internal.sessions.DirectCollectionChangeRecord;
 import si.fri.prpo.skupina3.entitete.Uporabnik;
 
 import javax.annotation.PostConstruct;
@@ -8,6 +10,7 @@ import javax.annotation.PreDestroy;
 import javax.enterprise.context.ApplicationScoped;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 import javax.persistence.Transient;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
@@ -48,30 +51,32 @@ public class UporabnikZrno {
         return em.createQuery(query).getResultList();
     }
 
-    public Uporabnik pridobiUporabnika(int uporabnikId) {
-        Uporabnik uporabnik = em.find(Uporabnik.class, uporabnikId);
+    public Uporabnik pridobiUporabnika(int id) {
+        Uporabnik uporabnik = em.find(Uporabnik.class, id);
         return uporabnik;
     }
 
     @Transactional
-    public Uporabnik dodajUporabnika(Uporabnik uporabnik) {
-        if (uporabnik != null) {
-            em.persist(uporabnik);
-        }
-        return uporabnik;
+    public Uporabnik dodajUporabnika(String ime, String priimek, String username) {
+        Uporabnik novUporabnik = new Uporabnik();
+        novUporabnik.setIme(ime);
+        novUporabnik.setPriimek(priimek);
+        novUporabnik.setUsername(username);
+        em.persist(novUporabnik);
+        return novUporabnik;
     }
 
     @Transactional
-    public Uporabnik posodobiUporabnika(int uporabnikId, Uporabnik uporabnik) {
-        Uporabnik u = em.find(Uporabnik.class, uporabnikId);
-        uporabnik.setId(u.getId());
+    public boolean posodobiUporabnika(int id) {
+        Uporabnik uporabnik = pridobiUporabnika(id);
+        if(uporabnik == null) return false;
         em.merge(uporabnik);
-        return  uporabnik;
+        return true;
     }
 
     @Transactional
-    public boolean odstraniUporabnika(int uporabnikId) {
-        Uporabnik uporabnik = pridobiUporabnika(uporabnikId);
+    public boolean odstraniUporabnika(int id) {
+        Uporabnik uporabnik = pridobiUporabnika(id);
         if (uporabnik != null) {
             em.remove(uporabnik);
             return true;

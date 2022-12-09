@@ -34,9 +34,9 @@ public class ProduktZrno {
         return  produkti;
     }
 
-    public List<Produkt> getCheaper() {
+    public List<Produkt> getCheaper(int n) {
         Query q = em.createNamedQuery("Produkt.getCheaperThan");
-        q.setParameter("cena", 40);
+        q.setParameter("cena", n);
         List<Produkt> produkti = q.getResultList();
         return  produkti;
     }
@@ -52,25 +52,27 @@ public class ProduktZrno {
         return  produkti;
     }
 
-    public Produkt pridobiProdukt(int produktId) {
-        Produkt produkt = em.find(Produkt.class, produktId);
+    public Produkt pridobiProdukt(int id) {
+        Produkt produkt = em.find(Produkt.class, id);
         return produkt;
     }
 
     @Transactional
-    public Produkt dodajProdukt(Produkt produkt) {
-        if (produkt != null) {
-            em.persist(produkt);
-        }
-        return produkt;
+    public Produkt dodajProdukt(String ime, Integer cena, String opis) {
+        Produkt novProdukt = new Produkt();
+        novProdukt.setIme(ime);
+        novProdukt.setCena(cena);
+        novProdukt.setOpis(opis);
+        em.persist(novProdukt);
+        return novProdukt;
     }
 
     @Transactional
-    public Produkt posodobiProdukt(int produktId, Produkt produkt) {
-        Produkt p = em.find(Produkt.class, produktId);
-        produkt.setId(p.getId());
+    public boolean posodobiProdukt(int id) {
+        Produkt produkt = pridobiProdukt(id);
+        if(produkt == null) return false;
         em.merge(produkt);
-        return  produkt;
+        return true;
     }
 
     @Transactional

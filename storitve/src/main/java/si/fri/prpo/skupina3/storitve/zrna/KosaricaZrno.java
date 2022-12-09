@@ -48,24 +48,26 @@ public class KosaricaZrno {
     }
 
     @Transactional
-    public Kosarica dodajKosarico(Kosarica kosarica) {
-        if (kosarica != null) {
-            em.persist(kosarica);
-        }
-        return kosarica;
+    public Kosarica dodajKosarico(int kolicina, int popust, int postnina) {
+        Kosarica novaKosarica = new Kosarica();
+        novaKosarica.setPopust(popust);
+        novaKosarica.setPostnina(postnina);
+        novaKosarica.setKolicinaProduktov(kolicina);
+        em.persist(novaKosarica);
+        return novaKosarica;
     }
 
     @Transactional
-    public Kosarica posodobiKosarico(int kosaricaId, Kosarica kosarica) {
-        Kosarica k = em.find(Kosarica.class, kosaricaId);
-        kosarica.setId(k.getId());
+    public boolean posodobiKosarico(int id) {
+        Kosarica kosarica = pridobiKosarico(id);
+        if(kosarica == null) return false;
         em.merge(kosarica);
-        return kosarica;
+        return true;
     }
 
     @Transactional
-    public boolean odstraniKosarico(int kosaricaId) {
-        Kosarica kosarica = pridobiKosarico(kosaricaId);
+    public boolean odstraniKosarico(int id) {
+        Kosarica kosarica = pridobiKosarico(id);
         if (kosarica != null) {
             em.remove(kosarica);
             return true;

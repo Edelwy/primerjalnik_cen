@@ -1,4 +1,5 @@
 package si.fri.prpo.skupina3.entitete;
+import javax.json.bind.annotation.JsonbTransient;
 import javax.persistence.*;
 import java.util.*;
 
@@ -20,9 +21,11 @@ public class Uporabnik {
     @Column(unique=true)
     private String username;
 
+    @JsonbTransient
     @OneToMany(mappedBy="Uporabnik", cascade=CascadeType.ALL)
     private List<Kosarica> kosarice;
 
+    @JsonbTransient
     @OneToOne
     @JoinColumn(name="primerjalnik_id")
     private Primerjalnik primerjalnik;
@@ -56,7 +59,7 @@ public class Uporabnik {
         sb.append(" Priimek: ");
         sb.append(this.priimek + " | ");
         sb.append(" Uporabnisko ime: ");
-        sb.append(this.username);
+        sb.append(this.username + "\n");
 
         return sb.toString();
     }

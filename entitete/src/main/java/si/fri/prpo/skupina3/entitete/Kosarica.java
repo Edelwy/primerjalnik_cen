@@ -1,4 +1,5 @@
 package si.fri.prpo.skupina3.entitete;
+import javax.json.bind.annotation.JsonbTransient;
 import javax.persistence.*;
 import java.util.*;
 
@@ -24,6 +25,7 @@ public class Kosarica {
     @JoinColumn(name="uporabnik_id")
     private Uporabnik uporabnik;
 
+    @JsonbTransient
     @ManyToOne
     @JoinColumn(name="primerjalnik_id")
     private Primerjalnik primerjalnik;
@@ -32,7 +34,7 @@ public class Kosarica {
     @JoinColumn(name="trgovina_id")
     private Trgovina trgovina;
 
-    @ManyToMany(cascade=CascadeType.ALL)
+    @ManyToMany(cascade=CascadeType.MERGE)
     @JoinTable(name="produkt_kosarica",
             joinColumns = @JoinColumn(name="id_kosarica"),
             inverseJoinColumns = @JoinColumn(name="id_produkt"))
@@ -57,10 +59,6 @@ public class Kosarica {
     public void setTrgovina(Trgovina trgovina) {this.trgovina = trgovina;}
     public void setUporabnik(Uporabnik uporabnik) {this.uporabnik = uporabnik;}
 
-    //dodamo ali izbrisemo produkt:
-    //public void addProdukt(Produkt produkt) {produkti.add(produkt);}
-    //public void deleteProdukt(Produkt produkt) {produkti.remove(produkt);}
-
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
@@ -72,7 +70,7 @@ public class Kosarica {
         sb.append(" Popust: ");
         sb.append(this.popust + " | ");
         sb.append(" Postnina: ");
-        sb.append(this.postnina);
+        sb.append(this.postnina + "\n");
 
         return sb.toString();
     }

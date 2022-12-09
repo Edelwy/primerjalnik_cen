@@ -1,13 +1,16 @@
 package si.fri.prpo.skupina3.entitete;
 import javax.persistence.*;
 import java.util.*;
+import  javax.json.bind.annotation.*;
+
 
 @Entity(name="produkt")
 @NamedQueries(value={
                 @NamedQuery(name="Produkt.getAll", query="SELECT p FROM produkt p"),
                 @NamedQuery(name="Produkt.getCheaperThan", query="SELECT p FROM produkt p WHERE p.cena < :cena"),
-                @NamedQuery(name="Produkt.byName", query="SELECT p FROM produkt p WHERE p.ime = :ime"),
-                @NamedQuery(name="Produkt.byId", query="SELECT p FROM produkt p WHERE p.id = :id")
+                @NamedQuery(name="Produkt.getByName", query="SELECT p FROM produkt p WHERE p.ime = :ime"),
+                @NamedQuery(name="Produkt.getById", query="SELECT p FROM produkt p WHERE p.id = :id"),
+                @NamedQuery(name="Produkt.getByNameAndStore", query="SELECT p FROM produkt p WHERE p.ime = :ime AND p.trgovina = :trgovina")
         })
 
 public class Produkt {
@@ -19,7 +22,8 @@ public class Produkt {
     private Integer cena;
     private String opis;
 
-    @ManyToMany(mappedBy="produkti", cascade=CascadeType.ALL)
+    @JsonbTransient
+    @ManyToMany(mappedBy="produkti", cascade=CascadeType.MERGE)
     private List<Kosarica> kosarice;
 
     @ManyToOne
@@ -55,10 +59,10 @@ public class Produkt {
         sb.append(this.cena + " \n ");
         sb.append("Opis: ");
         sb.append(this.opis);
-        String s = Arrays.toString(this.kosarice.toArray());
-        sb.append("\n Produkt je v kosaricah: " + s + " \n ");
+        int kolicina = this.kosarice.toArray().length;
+        sb.append("\n Produkt je v toliko kosaricah: " + kolicina + "\n ");
         sb.append("Trgovina: ");
-        sb.append(this.trgovina.getIme());
+        sb.append(this.trgovina.getIme() + "\n");
 
         return sb.toString();
     }
