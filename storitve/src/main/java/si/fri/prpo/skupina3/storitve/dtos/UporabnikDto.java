@@ -13,10 +13,20 @@ public class UporabnikDto {
     private String username;
     private Primerjalnik primerjalnik;
 
+    public UporabnikDto() {
+    }
+
     public UporabnikDto(String ime, String priimek, String username) {
         this.ime = ime;
         this.priimek = priimek;
         this.username = username;
+    }
+
+    public  UporabnikDto(Uporabnik uporabnik) {
+        this.id = uporabnik.getId();
+        this.ime = uporabnik.getIme();
+        this.priimek = uporabnik.getPriimek();
+        this.username = uporabnik.getUsername();
     }
 
     public Integer getId() {return id;}

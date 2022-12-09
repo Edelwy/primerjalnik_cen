@@ -10,18 +10,17 @@ public class ProduktDto {
     private Integer cena;
     private String opis;
 
-    private Trgovina trgovina;
-    private Kosarica kosarica;
+    public ProduktDto() {
+    }
 
-    public ProduktDto(Trgovina trgovina, String ime, Integer cena, String opis) {
-        this.trgovina = trgovina;
+    public ProduktDto(String ime, Integer cena, String opis) {
         this.ime = ime;
         this.cena = cena;
         this.opis = opis;
     }
 
     public ProduktDto(Produkt produkt) {
-        this.trgovina = produkt.getTrgovina();
+        this.id = produkt.getId();
         this.ime = produkt.getIme();
         this.cena = produkt.getCena();
         this.opis = produkt.getOpis();
@@ -50,10 +49,4 @@ public class ProduktDto {
         return opis;
     }
     public void setOpis(String opis) { this.opis = opis; }
-
-    public Trgovina getTrgovina() { return trgovina; }
-    public void setTrgovina(Trgovina trgovina) { this.trgovina = trgovina; }
-
-    public Kosarica getKosarica() { return kosarica; }
-    public void setKosarica(Kosarica kosarica) { this.kosarica = kosarica; }
 }

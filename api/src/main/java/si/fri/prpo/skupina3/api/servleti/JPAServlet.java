@@ -4,6 +4,7 @@ import com.kumuluz.ee.configuration.utils.ConfigurationUtil;
 import si.fri.prpo.skupina3.entitete.*;
 import si.fri.prpo.skupina3.storitve.dtos.KosaricaDto;
 import si.fri.prpo.skupina3.storitve.dtos.ProduktDto;
+import si.fri.prpo.skupina3.storitve.dtos.TrgovinaDto;
 import si.fri.prpo.skupina3.storitve.dtos.UporabnikDto;
 import si.fri.prpo.skupina3.storitve.zrna.*;
 
@@ -86,20 +87,21 @@ public class JPAServlet extends HttpServlet {
 
         //ustvarimo novo trgovino
         Trgovina novaTrgovina = trgovinaZrno.dodajTrgovino("Primark");
+        TrgovinaDto trgovina = new TrgovinaDto(novaTrgovina);
         writer.append("\nSeznam trgovin - dodali smo trgovino Primark:\n");
         trgovine = trgovinaZrno.pridobiTrgovine();
         trgovine.stream().forEach(u -> writer.append(u.toString() + "\n"));
 
         //ustvarimo novo kosarico
-        KosaricaDto kosarica = new KosaricaDto(novUporabnik, novaTrgovina, 25, 9);
-        Kosarica novaKosarica = upravljanjeProduktovZrno.ustvariKosarico(kosarica);
+        KosaricaDto kosarica = new KosaricaDto(25, 9);
+        Kosarica novaKosarica = upravljanjeProduktovZrno.ustvariKosarico(kosarica, uporabnik, trgovina);
         kosarice = kosaricaZrno.pridobiKosarice();
         writer.append("\nSeznam kosaric - dodali smo kosrico za Ano:\n");
         kosarice.stream().forEach(u -> writer.append(u.toString() + "\n"));
 
         //ustvarimo nov produkt
-        ProduktDto produkt = new ProduktDto(novaTrgovina, "Rdec sal", 10, "Topel sal za zimo.");
-        Produkt novProdukt = upravljanjeProduktovZrno.ustvariProdukt(produkt);
+        ProduktDto produkt = new ProduktDto("Rdec sal", 10, "Topel sal za zimo.");
+        Produkt novProdukt = upravljanjeProduktovZrno.ustvariProdukt(produkt, trgovina);
         produkti = produktZrno.pridobiProdukte();
         writer.append("\nSeznam produktov - dodali smo rdec sal:\n");
         produkti.stream().forEach(u -> writer.append(u.toString() + "\n"));

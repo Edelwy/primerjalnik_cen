@@ -9,25 +9,22 @@ public class KosaricaDto {
     private Integer id;
     private Integer popust;
     private Integer postnina;
+    private Integer kolicina;
 
-    private Primerjalnik primerjalnik;
-    private Trgovina trgovina;
-    private Uporabnik uporabnik;
+    public KosaricaDto() {
+    }
 
-    public KosaricaDto(Uporabnik uporabnik, Trgovina trgovina, int popust, int postnina) {
-        this.uporabnik = uporabnik;
+    public KosaricaDto(int popust, int postnina) {
+        this.kolicina = 0;
         this.popust = popust;
         this.postnina = postnina;
-        this.trgovina = trgovina;
     }
 
     public KosaricaDto(Kosarica kosarica) {
         this.id = kosarica.getId();
-        this.uporabnik = kosarica.getUporabnik();
         this.popust = kosarica.getPopust();
         this.postnina = kosarica.getPostnina();
-        this.trgovina = kosarica.getTrgovina();
-        this.primerjalnik = kosarica.getPrimerjalnik();
+        this.kolicina = kosarica.getKolicinaProduktov();
     }
 
     public Integer getKosaricaId() { return id; }
@@ -39,13 +36,4 @@ public class KosaricaDto {
     public Integer getPostnina() {return postnina;}
     public void setPostnina(Integer postnina) {this.postnina = postnina;}
 
-
-    public Primerjalnik getPrimerjalnik() {return primerjalnik;}
-    public void setPrimerjalnik(Primerjalnik primerjalnik) {this.primerjalnik = primerjalnik;}
-
-    public Trgovina getTrgovina() {return trgovina;}
-    public void setTrgovina(Trgovina trgovina) {this.trgovina = trgovina;}
-
-    public Uporabnik getUporabnik() {return uporabnik;}
-    public void setUporabnik(Uporabnik uporabnik) {this.uporabnik = uporabnik;}
 }
