@@ -12,24 +12,33 @@ import java.util.List;
 
 
 @ApplicationScoped
-@Path("produkt")
+@Path("produkti")
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
 public class ProduktVir {
 
     @Inject
-    private ProduktZrno ProduktZrno;
+    private ProduktZrno produktZrno;
 
     @GET
     public Response izpisProduktov() {
-        List<Produkt> produkti = ProduktZrno.pridobiProdukte();
+        List<Produkt> produkti = produktZrno.pridobiProdukte();
         return Response.status(Response.Status.OK).entity(produkti).build();
     }
 
-    @GET()
+    @GET
     @Path("{id}")
     public Response izpisProdukta(@PathParam("id") Integer id) {
-        Produkt produkt = ProduktZrno.pridobiProdukt(id);
+        Produkt produkt = produktZrno.pridobiProdukt(id);
         return Response.status(Response.Status.OK).entity(produkt).build();
     }
+
+    /*@POST
+    public Response createProduct(@Param("ime") String ime,
+                                  @FormDataParam("cena") int cena,
+                                  @FormDataParam("opis") String opis) {
+
+        Produkt produkt = produktZrno.dodajProdukt(ime,cena,opis);
+        return Response.status(Response.Status.OK).entity(produkt).build();
+    }*/
 }
