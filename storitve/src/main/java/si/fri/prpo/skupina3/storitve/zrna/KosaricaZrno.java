@@ -1,5 +1,6 @@
 package si.fri.prpo.skupina3.storitve.zrna;
 import si.fri.prpo.skupina3.entitete.*;
+import si.fri.prpo.skupina3.storitve.anotacije.BeleziKlice;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
@@ -17,7 +18,6 @@ public class KosaricaZrno {
     @PostConstruct
     private void init() {
         log.info("Inicializacija zrna " + KosaricaZrno.class.getSimpleName());
-
         //inicializacija virov
     }
 
@@ -29,6 +29,7 @@ public class KosaricaZrno {
     @PersistenceContext(unitName="primerjalnik-cen-jpa")
     private EntityManager em;
 
+    @BeleziKlice
     public List<Kosarica> pridobiKosarice() {
         List<Kosarica> kosarice = em.createNamedQuery("Kosarica.getAll").getResultList();
         return kosarice;

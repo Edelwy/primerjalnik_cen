@@ -1,5 +1,6 @@
 package si.fri.prpo.skupina3.storitve.zrna;
 import si.fri.prpo.skupina3.entitete.*;
+import si.fri.prpo.skupina3.storitve.anotacije.BeleziKlice;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
@@ -34,6 +35,7 @@ public class ProduktZrno {
         return  produkti;
     }
 
+    @BeleziKlice
     public List<Produkt> getCheaper(int n) {
         Query q = em.createNamedQuery("Produkt.getCheaperThan");
         q.setParameter("cena", n);
