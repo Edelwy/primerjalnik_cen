@@ -43,11 +43,13 @@ public class KosaricaZrno {
         return em.createQuery(query).getResultList();
     }
 
+    @BeleziKlice
     public Kosarica pridobiKosarico(int kosaricaId) {
         Kosarica kosarica = em.find(Kosarica.class, kosaricaId);
         return kosarica;
     }
 
+    @BeleziKlice
     @Transactional
     public Kosarica dodajKosarico(int kolicina, int popust, int postnina) {
         Kosarica novaKosarica = new Kosarica();
@@ -58,6 +60,7 @@ public class KosaricaZrno {
         return novaKosarica;
     }
 
+    @BeleziKlice
     @Transactional
     public boolean posodobiKosarico(int id) {
         Kosarica kosarica = pridobiKosarico(id);
@@ -66,6 +69,7 @@ public class KosaricaZrno {
         return true;
     }
 
+    @BeleziKlice
     @Transactional
     public boolean odstraniKosarico(int id) {
         Kosarica kosarica = pridobiKosarico(id);

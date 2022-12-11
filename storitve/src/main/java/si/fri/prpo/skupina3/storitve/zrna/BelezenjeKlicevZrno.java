@@ -3,9 +3,11 @@ package si.fri.prpo.skupina3.storitve.zrna;
 import javax.enterprise.context.ApplicationScoped;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.logging.Logger;
 
 @ApplicationScoped
 public class BelezenjeKlicevZrno {
+    private Logger log = Logger.getLogger(UpravljanjeUporabnikovZrno.class.getName());
     private HashMap<String, Integer> stKlicev;
     public BelezenjeKlicevZrno() {
         stKlicev = new HashMap<>();
@@ -19,7 +21,7 @@ public class BelezenjeKlicevZrno {
         else return false;
     }
     public void nastaviStKlicev(String imeMetode, int st) {
-        System.out.println("Metoda: " + imeMetode + " je bila klicana: " + st + "-krat.");
+        log.info("Metoda: " + imeMetode + " je bila klicana: " + st + "-krat.");
         stKlicev.put(imeMetode, st);
     }
 }

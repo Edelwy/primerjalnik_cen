@@ -30,6 +30,7 @@ public class ProduktZrno {
     @PersistenceContext(unitName="primerjalnik-cen-jpa")
     private EntityManager em;
 
+    @BeleziKlice
     public List<Produkt> pridobiProdukte() {
         List<Produkt> produkti = em.createNamedQuery("Produkt.getAll").getResultList();
         return  produkti;
@@ -54,11 +55,13 @@ public class ProduktZrno {
         return  produkti;
     }
 
+    @BeleziKlice
     public Produkt pridobiProdukt(int id) {
         Produkt produkt = em.find(Produkt.class, id);
         return produkt;
     }
 
+    @BeleziKlice
     @Transactional
     public Produkt dodajProdukt(String ime, Integer cena, String opis) {
         Produkt novProdukt = new Produkt();
@@ -69,6 +72,7 @@ public class ProduktZrno {
         return novProdukt;
     }
 
+    @BeleziKlice
     @Transactional
     public boolean posodobiProdukt(int id) {
         Produkt produkt = pridobiProdukt(id);
@@ -77,6 +81,7 @@ public class ProduktZrno {
         return true;
     }
 
+    @BeleziKlice
     @Transactional
     public boolean odstraniProdukt(int produktId) {
         Produkt produkt = pridobiProdukt(produktId);

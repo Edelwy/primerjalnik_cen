@@ -1,6 +1,7 @@
 package si.fri.prpo.skupina3.storitve.zrna;
 
 import si.fri.prpo.skupina3.entitete.*;
+import si.fri.prpo.skupina3.storitve.anotacije.BeleziKlice;
 import si.fri.prpo.skupina3.storitve.dtos.KosaricaDto;
 import si.fri.prpo.skupina3.storitve.dtos.ProduktDto;
 import si.fri.prpo.skupina3.storitve.dtos.TrgovinaDto;
@@ -136,6 +137,7 @@ public class UpravljanjeProduktovZrno {
         return produkt;
     }
 
+    @BeleziKlice
     @Transactional
     public boolean izbrisiProdukt(ProduktDto produktDto) {
         Produkt produkt = produktZrno.pridobiProdukt(produktDto.getProduktId());
@@ -153,6 +155,7 @@ public class UpravljanjeProduktovZrno {
         return true;
     }
 
+    @BeleziKlice
     @Transactional
     public List<Produkt> dodajProduktVKosarico(KosaricaDto k, ProduktDto p) {
         Kosarica kosarica = kosaricaZrno.pridobiKosarico(k.getKosaricaId());
@@ -185,6 +188,7 @@ public class UpravljanjeProduktovZrno {
         return kosarica.getProdukti();
     }
 
+    @BeleziKlice
     @Transactional
     public List<Produkt> odstraniProduktIzKosarice(KosaricaDto k, ProduktDto p) {
         Kosarica kosarica = kosaricaZrno.pridobiKosarico(k.getKosaricaId());

@@ -1,5 +1,6 @@
 package si.fri.prpo.skupina3.storitve.zrna;
 import si.fri.prpo.skupina3.entitete.*;
+import si.fri.prpo.skupina3.storitve.anotacije.BeleziKlice;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
@@ -29,6 +30,7 @@ public class TrgovinaZrno {
     @PersistenceContext(unitName="primerjalnik-cen-jpa")
     private EntityManager em;
 
+    @BeleziKlice
     public List<Trgovina> pridobiTrgovine() {
         List<Trgovina> trgovine = em.createNamedQuery("Trgovina.getAll").getResultList();
         return trgovine;
@@ -42,11 +44,13 @@ public class TrgovinaZrno {
         return em.createQuery(query).getResultList();
     }
 
+    @BeleziKlice
     public Trgovina pridobiTrgovino(int trgovinaId) {
         Trgovina trgovina = em.find(Trgovina.class, trgovinaId);
         return trgovina;
     }
 
+    @BeleziKlice
     @Transactional
     public Trgovina dodajTrgovino(String ime) {
         Query q = em.createNamedQuery("Trgovina.getByName");
@@ -64,6 +68,7 @@ public class TrgovinaZrno {
         return novaTrgovina;
     }
 
+    @BeleziKlice
     @Transactional
     public boolean posodobiTrgovino(int id) {
         Trgovina trgovina = pridobiTrgovino(id);
@@ -72,6 +77,7 @@ public class TrgovinaZrno {
         return true;
     }
 
+    @BeleziKlice
     @Transactional
     public boolean odstraniTrgovino(int trgovinaId) {
         Trgovina trgovina = pridobiTrgovino(trgovinaId);

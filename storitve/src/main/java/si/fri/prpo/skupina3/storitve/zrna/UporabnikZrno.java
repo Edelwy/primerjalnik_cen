@@ -4,6 +4,7 @@ import java.util.logging.Logger;
 
 import org.eclipse.persistence.internal.sessions.DirectCollectionChangeRecord;
 import si.fri.prpo.skupina3.entitete.Uporabnik;
+import si.fri.prpo.skupina3.storitve.anotacije.BeleziKlice;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
@@ -38,6 +39,7 @@ public class UporabnikZrno {
     @PersistenceContext(unitName = "primerjalnik-cen-jpa")
     private EntityManager em;
 
+    @BeleziKlice
     public List<Uporabnik> pridobiUporabnike() {
         List<Uporabnik> uporabniki = em.createNamedQuery("Uporabnik.getAll").getResultList();
         return uporabniki;
@@ -51,11 +53,13 @@ public class UporabnikZrno {
         return em.createQuery(query).getResultList();
     }
 
+    @BeleziKlice
     public Uporabnik pridobiUporabnika(int id) {
         Uporabnik uporabnik = em.find(Uporabnik.class, id);
         return uporabnik;
     }
 
+    @BeleziKlice
     @Transactional
     public Uporabnik dodajUporabnika(String ime, String priimek, String username) {
         Uporabnik novUporabnik = new Uporabnik();
@@ -66,6 +70,7 @@ public class UporabnikZrno {
         return novUporabnik;
     }
 
+    @BeleziKlice
     @Transactional
     public boolean posodobiUporabnika(int id) {
         Uporabnik uporabnik = pridobiUporabnika(id);
@@ -74,6 +79,7 @@ public class UporabnikZrno {
         return true;
     }
 
+    @BeleziKlice
     @Transactional
     public boolean odstraniUporabnika(int id) {
         Uporabnik uporabnik = pridobiUporabnika(id);

@@ -1,5 +1,6 @@
 package si.fri.prpo.skupina3.storitve.zrna;
 import si.fri.prpo.skupina3.entitete.*;
+import si.fri.prpo.skupina3.storitve.anotacije.BeleziKlice;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
@@ -29,6 +30,7 @@ public class PrimerjalnikZrno {
     @PersistenceContext(unitName="primerjalnik-cen-jpa")
     private EntityManager em;
 
+    @BeleziKlice
     public List<Primerjalnik> pridobiPrimerjalnike() {
         List<Primerjalnik> primerjalniki = em.createNamedQuery("Primerjalnik.getAll").getResultList();
         return primerjalniki;
@@ -42,11 +44,13 @@ public class PrimerjalnikZrno {
         return em.createQuery(query).getResultList();
     }
 
+    @BeleziKlice
     public Primerjalnik pridobiPrimerjalnik(int primerjalnikId) {
         Primerjalnik primerjalnik = em.find(Primerjalnik.class, primerjalnikId);
         return primerjalnik;
     }
 
+    @BeleziKlice
     @Transactional
     public Primerjalnik dodajPrimerjalnik(Integer kolicina) {
         Primerjalnik novPrimerjalnik = new Primerjalnik();
@@ -55,6 +59,7 @@ public class PrimerjalnikZrno {
         return novPrimerjalnik;
     }
 
+    @BeleziKlice
     @Transactional
     public boolean posodobiPrimerjalnik(int id) {
         Primerjalnik primerjalnik = pridobiPrimerjalnik(id);
@@ -63,6 +68,7 @@ public class PrimerjalnikZrno {
         return true;
     }
 
+    @BeleziKlice
     @Transactional
     public boolean odstraniPrimerjalnik(int primerjalnikId) {
         Primerjalnik primerjalnik = pridobiPrimerjalnik(primerjalnikId);

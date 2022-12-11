@@ -2,6 +2,7 @@ package si.fri.prpo.skupina3.storitve.zrna;
 import si.fri.prpo.skupina3.entitete.Kosarica;
 import si.fri.prpo.skupina3.entitete.Primerjalnik;
 import si.fri.prpo.skupina3.entitete.Uporabnik;
+import si.fri.prpo.skupina3.storitve.anotacije.BeleziKlice;
 import si.fri.prpo.skupina3.storitve.dtos.UporabnikDto;
 
 import javax.annotation.PostConstruct;
@@ -35,6 +36,7 @@ public class UpravljanjeUporabnikovZrno {
     @PreDestroy
     private void destroy() { log.info("Deinicializacija zrna " + UpravljanjeUporabnikovZrno.class.getSimpleName()); }
 
+    @BeleziKlice
     @Transactional
     public Uporabnik ustvariUporabnika(UporabnikDto uporabnikDto) {
         String ime = uporabnikDto.getIme();
@@ -58,6 +60,7 @@ public class UpravljanjeUporabnikovZrno {
         return uporabnik;
     }
 
+    @BeleziKlice
     public boolean izbrisiUporabnika(UporabnikDto u) {
         Uporabnik uporabnik = uporabnikZrno.pridobiUporabnika(u.getId());
 
