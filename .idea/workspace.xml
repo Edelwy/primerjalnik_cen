@@ -5,12 +5,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bcf938de-3707-454a-8958-9264b057e6c6" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/api/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/api/src/main/java/si/fri/prpo/skupina3/api/servleti/JPAServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/main/java/si/fri/prpo/skupina3/api/servleti/JPAServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/entitete/src/main/java/si/fri/prpo/skupina3/entitete/Trgovina.java" beforeDir="false" afterPath="$PROJECT_DIR$/entitete/src/main/java/si/fri/prpo/skupina3/entitete/Trgovina.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/src/main/java/si/fri/prpo/skupina3/api/v1/ProduktiApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/main/java/si/fri/prpo/skupina3/api/v1/ProduktiApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/src/main/java/si/fri/prpo/skupina3/api/v1/viri/KosaricaVir.java" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/main/java/si/fri/prpo/skupina3/api/v1/viri/KosaricaVir.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/src/main/java/si/fri/prpo/skupina3/api/v1/viri/PrimerjalnikVir.java" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/main/java/si/fri/prpo/skupina3/api/v1/viri/PrimerjalnikVir.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/src/main/java/si/fri/prpo/skupina3/api/v1/viri/ProduktVir.java" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/main/java/si/fri/prpo/skupina3/api/v1/viri/ProduktVir.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/src/main/java/si/fri/prpo/skupina3/api/v1/viri/TrgovinaVir.java" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/main/java/si/fri/prpo/skupina3/api/v1/viri/TrgovinaVir.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/src/main/java/si/fri/prpo/skupina3/api/v1/viri/UporabnikVir.java" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/main/java/si/fri/prpo/skupina3/api/v1/viri/UporabnikVir.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/src/main/java/si/fri/prpo/skupina3/api/v1/viri/UpravljanjeProduktovVir.java" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/main/java/si/fri/prpo/skupina3/api/v1/viri/UpravljanjeProduktovVir.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storitve/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/storitve/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storitve/src/main/java/si/fri/prpo/skupina3/storitve/zrna/KosaricaZrno.java" beforeDir="false" afterPath="$PROJECT_DIR$/storitve/src/main/java/si/fri/prpo/skupina3/storitve/zrna/KosaricaZrno.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storitve/src/main/java/si/fri/prpo/skupina3/storitve/zrna/PrimerjalnikZrno.java" beforeDir="false" afterPath="$PROJECT_DIR$/storitve/src/main/java/si/fri/prpo/skupina3/storitve/zrna/PrimerjalnikZrno.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/storitve/src/main/java/si/fri/prpo/skupina3/storitve/zrna/ProduktZrno.java" beforeDir="false" afterPath="$PROJECT_DIR$/storitve/src/main/java/si/fri/prpo/skupina3/storitve/zrna/ProduktZrno.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storitve/src/main/java/si/fri/prpo/skupina3/storitve/zrna/TrgovinaZrno.java" beforeDir="false" afterPath="$PROJECT_DIR$/storitve/src/main/java/si/fri/prpo/skupina3/storitve/zrna/TrgovinaZrno.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storitve/src/main/java/si/fri/prpo/skupina3/storitve/zrna/UporabnikZrno.java" beforeDir="false" afterPath="$PROJECT_DIR$/storitve/src/main/java/si/fri/prpo/skupina3/storitve/zrna/UporabnikZrno.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -20,6 +31,7 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="AnnotationType" />
         <option value="Class" />
       </list>
     </option>
@@ -87,6 +99,18 @@
       <workItem from="1669461936594" duration="8839000" />
       <workItem from="1669495614637" duration="169000" />
       <workItem from="1669496994294" duration="945000" />
+      <workItem from="1669895815762" duration="275000" />
+      <workItem from="1669896121873" duration="91000" />
+      <workItem from="1670526830424" duration="716000" />
+      <workItem from="1670530995158" duration="989000" />
+      <workItem from="1670690393266" duration="7231000" />
+      <workItem from="1670698995747" duration="471000" />
+      <workItem from="1671291301676" duration="59000" />
+      <workItem from="1671291433930" duration="5116000" />
+      <workItem from="1671296568933" duration="4219000" />
+      <workItem from="1671301124740" duration="4967000" />
+      <workItem from="1671359225313" duration="6000" />
+      <workItem from="1671369483980" duration="4697000" />
     </task>
     <servers />
   </component>

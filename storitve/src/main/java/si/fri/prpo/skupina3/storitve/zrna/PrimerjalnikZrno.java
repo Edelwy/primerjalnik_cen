@@ -1,4 +1,6 @@
 package si.fri.prpo.skupina3.storitve.zrna;
+import com.kumuluz.ee.rest.beans.QueryParameters;
+import com.kumuluz.ee.rest.utils.JPAUtils;
 import si.fri.prpo.skupina3.entitete.*;
 import si.fri.prpo.skupina3.storitve.anotacije.BeleziKlice;
 
@@ -34,6 +36,14 @@ public class PrimerjalnikZrno {
     public List<Primerjalnik> pridobiPrimerjalnike() {
         List<Primerjalnik> primerjalniki = em.createNamedQuery("Primerjalnik.getAll").getResultList();
         return primerjalniki;
+    }
+
+    public List<Primerjalnik> pridobiPrimerjalnike(QueryParameters query) {
+        return JPAUtils.queryEntities(em, Primerjalnik.class, query);
+    }
+
+    public Long pridobiPrimerjalnikeCount(QueryParameters query) {
+        return JPAUtils.queryEntitiesCount(em, Primerjalnik.class, query);
     }
 
     public List<Primerjalnik> pridobiPrimerjalnikeCriteriaAPI() {

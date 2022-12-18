@@ -1,4 +1,6 @@
 package si.fri.prpo.skupina3.storitve.zrna;
+import com.kumuluz.ee.rest.beans.QueryParameters;
+import com.kumuluz.ee.rest.utils.JPAUtils;
 import si.fri.prpo.skupina3.entitete.*;
 import si.fri.prpo.skupina3.storitve.anotacije.BeleziKlice;
 
@@ -34,6 +36,14 @@ public class TrgovinaZrno {
     public List<Trgovina> pridobiTrgovine() {
         List<Trgovina> trgovine = em.createNamedQuery("Trgovina.getAll").getResultList();
         return trgovine;
+    }
+
+    public List<Trgovina> pridobiTrgovine(QueryParameters query) {
+        return JPAUtils.queryEntities(em, Trgovina.class, query);
+    }
+
+    public Long pridobiTrgovinoCount(QueryParameters query) {
+        return JPAUtils.queryEntitiesCount(em, Trgovina.class, query);
     }
 
     public List<Trgovina> pridobiTrgovineCriteriaAPI() {

@@ -1,4 +1,6 @@
 package si.fri.prpo.skupina3.storitve.zrna;
+import com.kumuluz.ee.rest.beans.QueryParameters;
+import com.kumuluz.ee.rest.utils.JPAUtils;
 import si.fri.prpo.skupina3.entitete.*;
 import si.fri.prpo.skupina3.storitve.anotacije.BeleziKlice;
 
@@ -42,6 +44,14 @@ public class ProduktZrno {
         q.setParameter("cena", n);
         List<Produkt> produkti = q.getResultList();
         return  produkti;
+    }
+
+    public List<Produkt> pridobiProdukte(QueryParameters query) {
+        return JPAUtils.queryEntities(em, Produkt.class, query);
+    }
+
+    public Long pridobiProdukteCount(QueryParameters query) {
+        return JPAUtils.queryEntitiesCount(em, Produkt.class, query);
     }
 
     public List<Produkt> getProduktCriteriaAPI() {

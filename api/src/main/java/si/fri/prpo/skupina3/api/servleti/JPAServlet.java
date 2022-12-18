@@ -6,6 +6,7 @@ import si.fri.prpo.skupina3.storitve.dtos.KosaricaDto;
 import si.fri.prpo.skupina3.storitve.dtos.ProduktDto;
 import si.fri.prpo.skupina3.storitve.dtos.TrgovinaDto;
 import si.fri.prpo.skupina3.storitve.dtos.UporabnikDto;
+import si.fri.prpo.skupina3.storitve.interceptorji.BelezenjeKlicevInterceptor;
 import si.fri.prpo.skupina3.storitve.zrna.*;
 
 import javax.inject.Inject;
@@ -127,5 +128,6 @@ public class JPAServlet extends HttpServlet {
         //drugi izpis @RequestScoped in @ApplicationScoped
         zrnoRequestScoped.izpisId();
         zrnoApplicationScoped.izpisId();
+
     }
 }

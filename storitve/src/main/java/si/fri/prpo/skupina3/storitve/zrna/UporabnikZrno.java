@@ -1,8 +1,9 @@
+
 package si.fri.prpo.skupina3.storitve.zrna;
 import java.util.List;
 import java.util.logging.Logger;
 
-import org.eclipse.persistence.internal.sessions.DirectCollectionChangeRecord;
+import com.kumuluz.ee.rest.utils.JPAUtils;
 import si.fri.prpo.skupina3.entitete.Uporabnik;
 import si.fri.prpo.skupina3.storitve.anotacije.BeleziKlice;
 
@@ -11,12 +12,11 @@ import javax.annotation.PreDestroy;
 import javax.enterprise.context.ApplicationScoped;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import javax.persistence.Query;
-import javax.persistence.Transient;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 import javax.transaction.Transactional;
+import com.kumuluz.ee.rest.beans.QueryParameters;
 
 @ApplicationScoped
 public class UporabnikZrno {
@@ -43,6 +43,14 @@ public class UporabnikZrno {
     public List<Uporabnik> pridobiUporabnike() {
         List<Uporabnik> uporabniki = em.createNamedQuery("Uporabnik.getAll").getResultList();
         return uporabniki;
+    }
+
+    public List<Uporabnik> pridobiUporabnike(QueryParameters query) {
+        return JPAUtils.queryEntities(em, Uporabnik.class, query);
+    }
+
+    public Long pridobiUporabnikeCount(QueryParameters query) {
+        return JPAUtils.queryEntitiesCount(em, Uporabnik.class, query);
     }
 
     public List<Uporabnik> pridobiUporabnikeCriteriaAPI() {

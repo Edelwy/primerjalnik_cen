@@ -1,4 +1,6 @@
 package si.fri.prpo.skupina3.storitve.zrna;
+import com.kumuluz.ee.rest.beans.QueryParameters;
+import com.kumuluz.ee.rest.utils.JPAUtils;
 import si.fri.prpo.skupina3.entitete.*;
 import si.fri.prpo.skupina3.storitve.anotacije.BeleziKlice;
 
@@ -33,6 +35,14 @@ public class KosaricaZrno {
     public List<Kosarica> pridobiKosarice() {
         List<Kosarica> kosarice = em.createNamedQuery("Kosarica.getAll").getResultList();
         return kosarice;
+    }
+
+    public List<Kosarica> pridobiKosarice(QueryParameters query) {
+        return JPAUtils.queryEntities(em, Kosarica.class, query);
+    }
+
+    public Long pridobiKosariceCount(QueryParameters query) {
+        return JPAUtils.queryEntitiesCount(em, Kosarica.class, query);
     }
 
     public List<Kosarica> pridobiKosariceCriteriaAPI() {

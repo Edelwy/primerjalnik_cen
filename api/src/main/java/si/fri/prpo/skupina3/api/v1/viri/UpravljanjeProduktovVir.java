@@ -5,7 +5,6 @@ import si.fri.prpo.skupina3.entitete.Kosarica;
 import si.fri.prpo.skupina3.entitete.Produkt;
 import si.fri.prpo.skupina3.storitve.dtos.KosaricaDto;
 import si.fri.prpo.skupina3.storitve.dtos.ProduktDto;
-import si.fri.prpo.skupina3.storitve.dtos.TrgovinaDto;
 import si.fri.prpo.skupina3.storitve.zrna.KosaricaZrno;
 import si.fri.prpo.skupina3.storitve.zrna.ProduktZrno;
 import si.fri.prpo.skupina3.storitve.zrna.UpravljanjeProduktovZrno;
@@ -13,8 +12,10 @@ import si.fri.prpo.skupina3.storitve.zrna.UpravljanjeProduktovZrno;
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 import javax.ws.rs.*;
+import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import javax.ws.rs.core.UriInfo;
 import java.util.List;
 import java.util.logging.Logger;
 
@@ -23,6 +24,10 @@ import java.util.logging.Logger;
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
 public class UpravljanjeProduktovVir {
+
+    @Context
+    protected UriInfo uriInfo;
+
     private Logger log = Logger.getLogger(KosaricaZrno.class.getName());
 
     @Inject
