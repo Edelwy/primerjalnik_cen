@@ -90,7 +90,6 @@ public class PriceAnalyticsApiOdjemalec {
         } while(test.equals("working"));
 
         String[] offers = result.split("\"");
-        System.out.println(Arrays.toString(offers) + "\n");
 
         for(int i = 0; i < offers.length; i++) {
             if(offers[i].equals("price")) {
