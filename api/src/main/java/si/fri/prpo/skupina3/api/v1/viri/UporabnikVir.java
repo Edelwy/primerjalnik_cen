@@ -46,7 +46,7 @@ public class UporabnikVir {
             @APIResponse(responseCode = "200",
                     description = "Seznam uporabnikov",
                     content = @Content(schema = @Schema(implementation = Uporabnik.class, type = SchemaType.ARRAY)),
-                    headers = {@Header(name = "X-Total-Count", description = "Število vrnjnih uporabnikov")}
+                    headers = {@Header(name = "X-Total-Count", description = "Stevilo vrnjnih uporabnikov")}
             )
     })
     @GET
@@ -110,8 +110,8 @@ public class UporabnikVir {
                     responseCode = "400",
                     content = @Content(schema = @Schema(implementation = NeveljavenUporabnikMapper.class)))
     })
+
     @POST
-    @Path("{id}")
     public Response ustvariUporabnika(@RequestBody(
             description = "DTO objekt za dodajanje uporabnikov.",
             required = true,
@@ -139,6 +139,4 @@ public class UporabnikVir {
         if(!uporabnikZrno.posodobiUporabnika(id)) return Response.status(Response.Status.NOT_FOUND).build();
         return Response.status(Response.Status.OK).build();
     }
-
-
 }

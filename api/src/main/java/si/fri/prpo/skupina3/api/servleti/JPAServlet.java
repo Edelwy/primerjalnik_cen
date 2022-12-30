@@ -7,6 +7,7 @@ import si.fri.prpo.skupina3.storitve.dtos.ProduktDto;
 import si.fri.prpo.skupina3.storitve.dtos.TrgovinaDto;
 import si.fri.prpo.skupina3.storitve.dtos.UporabnikDto;
 import si.fri.prpo.skupina3.storitve.interceptorji.BelezenjeKlicevInterceptor;
+import si.fri.prpo.skupina3.storitve.odjemalci.PriceAnalyticsApiOdjemalec;
 import si.fri.prpo.skupina3.storitve.zrna.*;
 
 import javax.inject.Inject;
@@ -128,6 +129,14 @@ public class JPAServlet extends HttpServlet {
         //drugi izpis @RequestScoped in @ApplicationScoped
         zrnoRequestScoped.izpisId();
         zrnoApplicationScoped.izpisId();
+
+        //ustvarimo novo trgovino
+        Trgovina testTrgovina = trgovinaZrno.dodajTrgovino("ebay");
+        TrgovinaDto testTrgovinaDto = new TrgovinaDto(testTrgovina);
+
+        //ustvarimo nov produkt
+        ProduktDto testProduktDto = new ProduktDto("iphone", 500, "Nov telefon znamke Apple");
+        Produkt testProdukt = upravljanjeProduktovZrno.ustvariProdukt(testProduktDto, testTrgovinaDto);
 
     }
 }
