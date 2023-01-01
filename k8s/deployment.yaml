@@ -15,6 +15,13 @@ spec:
       containers:
         - image: edelwy/primerjalnik-cen
           name: primerjalnik-cen
+          env:
+            - name: KUMULUZEE_DATASOURCES0_CONNECTIONURL
+              value: jdbc:postgresql://fanny.db.elephantsql.com:5432/zqjqqtrd
+            - name: KUMULUZEE_DATASOURCES0_USERNAME
+              value: zqjqqtrd
+            - name: KUMULUZEE_DATASOURCES0_PASSWORD
+              value: <geslo>
           ports:
             - containerPort: 8080
               name: server
