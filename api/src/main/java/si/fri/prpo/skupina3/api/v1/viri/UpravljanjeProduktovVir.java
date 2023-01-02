@@ -1,6 +1,5 @@
 package si.fri.prpo.skupina3.api.v1.viri;
 
-
 import si.fri.prpo.skupina3.entitete.Kosarica;
 import si.fri.prpo.skupina3.entitete.Produkt;
 import si.fri.prpo.skupina3.storitve.dtos.KosaricaDto;
@@ -8,6 +7,7 @@ import si.fri.prpo.skupina3.storitve.dtos.ProduktDto;
 import si.fri.prpo.skupina3.storitve.zrna.KosaricaZrno;
 import si.fri.prpo.skupina3.storitve.zrna.ProduktZrno;
 import si.fri.prpo.skupina3.storitve.zrna.UpravljanjeProduktovZrno;
+import com.kumuluz.ee.cors.annotations.CrossOrigin;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
@@ -23,6 +23,7 @@ import java.util.logging.Logger;
 @Path("dodaj")
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
+@CrossOrigin(supportedMethods = "GET, POST, DELETE")
 public class UpravljanjeProduktovVir {
 
     @Context

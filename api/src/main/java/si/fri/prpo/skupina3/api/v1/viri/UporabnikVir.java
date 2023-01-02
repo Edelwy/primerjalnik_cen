@@ -1,4 +1,5 @@
 package si.fri.prpo.skupina3.api.v1.viri;
+import com.kumuluz.ee.cors.annotations.CrossOrigin;
 import org.eclipse.microprofile.openapi.annotations.headers.Header;
 import org.eclipse.microprofile.openapi.annotations.parameters.Parameter;
 import org.eclipse.microprofile.openapi.annotations.parameters.Parameters;
@@ -30,6 +31,7 @@ import java.util.List;
 @Path("uporabniki")
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
+@CrossOrigin(supportedMethods = "GET, POST, DELETE")
 public class UporabnikVir {
 
     @Context

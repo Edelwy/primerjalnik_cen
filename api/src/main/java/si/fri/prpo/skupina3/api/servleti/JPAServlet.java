@@ -98,7 +98,7 @@ public class JPAServlet extends HttpServlet {
         KosaricaDto kosarica = new KosaricaDto(25, 9);
         Kosarica novaKosarica = upravljanjeProduktovZrno.ustvariKosarico(kosarica, uporabnik, trgovina);
         kosarice = kosaricaZrno.pridobiKosarice();
-        writer.append("\nSeznam kosaric - dodali smo kosrico za Ano:\n");
+        writer.append("\nSeznam kosaric - dodali smo kosarico za Ano:\n");
         kosarice.stream().forEach(u -> writer.append(u.toString() + "\n"));
 
         //ustvarimo nov produkt
