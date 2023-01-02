@@ -87,7 +87,6 @@ public class TrgovinaVir {
                     content = @Content(schema = @Schema(implementation = NeveljavnaTrgovinaMapper.class)))
     })
     @POST
-    @Path("{id}")
     public Response ustvariTrgovino(@RequestBody(
             description = "DTO objekt za dodajanje trgovin.",
             required = true,
